@@ -7,7 +7,7 @@ jobs:
     steps:
     - name: Hello world action step
       id: hello
-      uses: action-example@v1
+      uses: action-exampl/node-modules/@action/core
       with:
         who-to-greet: 'shriaas the Octobat'
     # Use the output from the `hello` step
