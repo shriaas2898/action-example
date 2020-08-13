@@ -10,6 +10,6 @@ This action prints "Hello action" or "Hello"+ the name of person to greet to the
 The time person was greeted
 
 ## Example usage
-uses: actions/hello-world-javascript-action@v1
+uses: actions-example
 with:
   who-to-greet: 'Mona the Octocat'
