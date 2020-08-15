@@ -3,8 +3,13 @@ on: [push]
 jobs:
   check_directory_and_list_files:
     runs-on: ubuntu-latest
+    
     steps:
-      - run: |
-          pwd
-          ls -a
-          find README.md
+      - name: setup-directory
+        uses: actions/checkout@v2
+        
+      - name: find-files
+        run: |
+            pwd
+            ls -a
+            find README.md
