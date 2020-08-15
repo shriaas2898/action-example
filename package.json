@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "This repo contains just trail example to understand and try out github actions using javascript.",
   "main": "index.js",
-  "scripts": {
+  "scripts": {"contributions": {"Name:** name1": "https://github.com/link-to-pr\n    **Name:** name1"}}
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
