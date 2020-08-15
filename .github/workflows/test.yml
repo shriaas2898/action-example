@@ -11,5 +11,5 @@ jobs:
       - name: find-files
         run: |
             pwd
-            ls -a
+            ls -l
             find README.md
