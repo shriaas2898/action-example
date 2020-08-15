@@ -1,8 +1,12 @@
-on: [issue]
-  types: [opened]
+name: add-project
+# This workflow gets executed when someone opens an issue for adding a project
+on:
+  issues:
+      types: [opened]
 jobs:
-  add_project_job:
+   add_project_job:
+    name: add-project
     runs-on: ubuntu-latest
-    shell: bash
-    name: A job to add or update a project
-    run: python3 add-name.py ${{ github.event.issue.title }} ${{ github.event.issue.title }}
+    steps:
+    - name: A job to add or update a project
+      run: python3 add-name.py ${{ github.event.issue.title }} ${{ github.event.issue.title }}
