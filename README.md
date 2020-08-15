@@ -12,6 +12,7 @@ The time person was greeted
 # Leaderboard
 | Name | Number of Contributions | Link of Contribution|
 | --- | --- | --- |
+| [@username](https://github.io/username) | 1 |  - [PR for something](https://github.com/link-to-pr) <br> |
 <!-- End of Leaderbaord-->
 
 
