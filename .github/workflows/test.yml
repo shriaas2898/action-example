@@ -10,6 +10,5 @@ jobs:
         
       - name: find-files
         run: |
-            pwd
-            ls -l
-            find README.md
+          chmod 775 add-name.py README.md community-contributions.json
+          ls -l
