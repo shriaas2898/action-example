@@ -1,9 +1,9 @@
 name: test-file
 on: [push]
 jobs:
-  check_directory_and_list_files
-  runs-on: ubuntu-latest
-  steps:
-  -run: |
-      pwd
-      ls
+  check_directory_and_list_files:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          pwd
+          ls
