@@ -8,5 +8,7 @@ jobs:
     name: add-project
     runs-on: ubuntu-latest
     steps:
+    - name: setup directory
+      uses: actions/checkout@v2
     - name: A job to add or update a project
       run: python3 add-name.py ${{ github.event.issue.title }} ${{ github.event.issue.body }}
