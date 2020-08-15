@@ -12,6 +12,8 @@ The time person was greeted
 # Leaderboard
 | Name | Number of Contributions | Link of Contribution|
 | --- | --- | --- |
+| [@username](https://github.io/username) | 1 |  - [PR for something](https://github.com/link-to-pr) <br> |
+| [@Amorpheuz](https://github.io/Amorpheuz) | 1 |  - [Update Windows Installation docs to WSL 2](https://github.com/forem/forem/pull/9573) <br> |
 <!-- End of Leaderbaord-->
 
 
