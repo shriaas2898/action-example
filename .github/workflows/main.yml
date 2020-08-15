@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: A job to add or update a project
-      run: python3 add-name.py ${{ github.event.issue.title }} ${{ github.event.issue.title }}
+      run: python3 add-name.py ${{ github.event.issue.title }} ${{ github.event.issue.body }}
