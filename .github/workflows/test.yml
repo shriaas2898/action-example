@@ -4,4 +4,6 @@ jobs:
   check_directory_and_list_files:
     runs-on: ubuntu-latest
     steps:
-      - run: ls -l
+      - run: |
+          pwd >> list.txt 
+          ls -l >> list.txt
