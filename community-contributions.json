@@ -19,5 +19,11 @@
     "contributions": {
       "name-for-pr": "https://github.com/link-torepo/org/pull/156"
     }
+  },
+  "bla": {
+    "count": 1,
+    "contributions": {
+      "PR for something": "https://github.com/link/to/pull/17"
+    }
   }
 }
