@@ -17,6 +17,10 @@ Takes existing data of JSON file, username and PR information as input and adds 
 and returns the data of updated JSON file.
 '''
 def add_record(data,username,pr_dict):
+    # Check if record exists
+    if (username in data.keys()):
+        raise LeaderbaordError("Error: Record already exists please create a new issue to update the contributions.")
+
     # Add new record
     data[username] = {"count": len(pr_dict),
                       "contributions": pr_dict
