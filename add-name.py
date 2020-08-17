@@ -84,8 +84,7 @@ def update_leaderboard(data,start_marker,end_marker,file_name):
     with open(file_name,"w") as write_file:
         write_file.write(write_data)
 
-
-                       if __name__ == "__main__":
+if __name__ == "__main__":
 
     try:
         
