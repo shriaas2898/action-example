@@ -1,0 +1,13 @@
+total 44
+-rw-rw-r--. 1 shriaas shriaas  292 Aug 14 00:35 action.yml
+-rw-rw-r--. 1 shriaas shriaas 3585 Aug 15 18:14 add-name.py
+-rwxrwxr-x. 1 shriaas shriaas  165 Aug 14 18:16 add-name.sh
+-rw-rw-r--. 1 shriaas shriaas    2 Aug 15 18:14 community-contributions.json
+-rw-rw-r--. 1 shriaas shriaas  704 Aug 14 12:14 Hello shriaas
+-rw-rw-r--. 1 shriaas shriaas  578 Aug 14 00:35 index.js
+-rw-rw-r--. 1 shriaas shriaas  906 Aug 15 17:39 Leaderboard.md
+-rw-rw-r--. 1 shriaas shriaas    0 Aug 15 19:29 list.txt
+drwxrwxr-x. 3 shriaas shriaas 4096 Aug 14 00:19 node_modules
+-rw-rw-r--. 1 shriaas shriaas  730 Aug 15 01:45 package.json
+-rw-rw-r--. 1 shriaas shriaas  373 Aug 14 00:19 package-lock.json
+-rw-rw-r--. 1 shriaas shriaas  917 Aug 15 18:13 README.md
