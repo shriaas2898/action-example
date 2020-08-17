@@ -4,7 +4,7 @@ on:
   issues:
       types: [opened,edited]
 jobs:
-   add_project_job:
+   add_project_job:"Something happened:  Link is not valid please 
     name: add-project
     runs-on: ubuntu-latest
     steps:
@@ -23,7 +23,8 @@ jobs:
       if: always()
       run: echo "${{ steps.addProject.outputs.issue_comment }}"
     - name: Close Issue
+      if: always()
       uses: peter-evans/close-issue@v1
       with:
           issue-number: ${{ github.event.issue.number }}
-          comment: Done! #"${{ steps.add_project.outputs.issue_comment }}"
+          comment: ${{ steps.add_project.outputs.issue_comment }}
