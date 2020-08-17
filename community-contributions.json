@@ -8,6 +8,15 @@
       "Lol": "https://google.com"
     }
   },
+  "nayanaya": {
+    "count": 4,
+    "contributions": {
+      "Ekdum naya": "https://github.com/nayi/link-pe/pull/2",
+      "Bilkul naya": "https://github.com/nayi/link-pe/pull/3",
+      "Bohot naya": "https://github.com/nayi/link-pe/pull/4",
+      "Bohot zyada hi naya": "https://github.com/nayi/link-pe/pull/5"
+    }
+  },
   "username": {
     "count": 1,
     "contributions": {
