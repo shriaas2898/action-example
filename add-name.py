@@ -124,10 +124,8 @@ if __name__ == "__main__":
         # Update the leader board 
         update_leaderboard(contr_data, 'Link of Contribution|\n| --- | --- | --- |\n', '<!-- End of Leaderbaord', 'README.md')        
         print("Successfully added your contribution")
-    '''
+    
+    
     except LeaderbaordError as e:
         print(str(e))
 
-    except Exception as e:
-        print("Error: Internal error occured. Please try again later.")
-    '''
