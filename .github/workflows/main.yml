@@ -27,4 +27,4 @@ jobs:
       uses: peter-evans/close-issue@v1
       with:
           issue-number: ${{ github.event.issue.number }}
-          comment: ${{ steps.add_project.outputs.issue_comment }}
+          comment: ${{ steps.addProject.outputs.issue_comment }}
