@@ -14,7 +14,7 @@ The time person was greeted
 | --- | --- | --- |
 | [@Amorpheuz](https://github.io/Amorpheuz) | 4 | <details> <summary>List of Contributions </summary> - [Update Windows Installation docs to WSL 2](https://github.com/forem/forem/pull/9573) <br> - [Fix actions/checkout to v2 for rebase workflow](https://github.com/forem/forem/pull/9515) <br> - [Run Push step only on push to dev branch](https://github.com/Amorpheuz/gatsby-conditional-builds-demo/pull/4) <br> - [Lol](https://google.com) <br></details> |
 | [@username](https://github.io/username) | 1 | <details> <summary>List of Contributions </summary> - [PR for something](https://github.com/link-to-pr) <br></details> |
-| [@aastha](https://github.io/aastha) | 1 | <details> <summary>List of Contributions </summary> - [name-for-pr](https://github.com/link-torepo/org/pull/123) <br></details> |
+| [@aastha](https://github.io/aastha) | 1 | <details> <summary>List of Contributions </summary> - [name-for-pr](https://github.com/link-torepo/org/pull/12) <br></details> |
 <!-- End of Leaderbaord-->
 
 
