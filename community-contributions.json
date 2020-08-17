@@ -1,0 +1,35 @@
+{
+  "Amorpheuz": {
+    "count": 4,
+    "contributions": {
+      "Update Windows Installation docs to WSL 2": "https://github.com/forem/forem/pull/9573",
+      "Fix actions/checkout to v2 for rebase workflow": "https://github.com/forem/forem/pull/9515",
+      "Run Push step only on push to dev branch": "https://github.com/Amorpheuz/gatsby-conditional-builds-demo/pull/4",
+      "Lol": "https://google.com"
+    }
+  },
+  "username": {
+    "count": 1,
+    "contributions": {
+      "PR for something": "https://github.com/link-to-pr"
+    }
+  },
+  "aastha": {
+    "count": 1,
+    "contributions": {
+      "name-for-pr": "https://github.com/link-torepo/org/pull/156"
+    }
+  },
+  "bla": {
+    "count": 1,
+    "contributions": {
+      "PR for something": "https://github.com/link/to/pull/17"
+    }
+  },
+  "shriaas2898": {
+    "count": 1,
+    "contributions": {
+      "PR for something": "https://github.com/link/topr/pull/11"
+    }
+  }
+}
