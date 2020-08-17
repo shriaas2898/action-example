@@ -11,9 +11,10 @@ jobs:
     - name: setup directory
       uses: actions/checkout@v2
     - name: A job to add or update a project
+      id: add_project
       run: | 
         echo ::set-output name=issue_comment `python3 add-name.py "${{ github.event.issue.title }}" "${{ github.event.issue.body }}"`
-        echo ${{ steps.fruit.outputs.issue_comment }}
+        echo ${{ steps.add_project.outputs.issue_comment }}
         git config user.name shriaas2898
         git add .
         git commit -m "Added: ${{ github.event.issue.title }}"
@@ -22,4 +23,4 @@ jobs:
       uses: peter-evans/close-issue@v1
       with:
           issue-number: ${{ github.event.issue.number }}
-          comment: ${{ steps.fruit.outputs.issue_comment }}
+          comment: ${{ steps.add_project.outputs.issue_comment }}
