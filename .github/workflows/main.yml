@@ -13,13 +13,15 @@ jobs:
     - name: A job to add or update a project
       id: addProject
       run: | 
+        echo "::set-output name=issue_comment::`python3 add-name.py '${{ github.event.issue.title }}' '${{ github.event.issue.body }}'`"
         python3 add-name.py '${{ github.event.issue.title }}' '${{ github.event.issue.body }}'
         git config user.name shriaas2898
         git add .
         git commit -m "Added: ${{ github.event.issue.title }}"
         git push
-    # - name: display message # echo "::set-output name=issue_comment::`python3 add-name.py '${{ github.event.issue.title }}' '${{ github.event.issue.body }}'`" 
-      # run: echo "${{ steps.addProject.outputs.issue_comment }}"
+    - name: display message
+      if: always()
+      run: echo "${{ steps.addProject.outputs.issue_comment }}"
     - name: Close Issue
       uses: peter-evans/close-issue@v1
       with:
