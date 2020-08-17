@@ -1,15 +1,20 @@
-on: [push]
-
+name: add-project
+# This workflow gets executed when someone opens an issue for adding a project
+on:
+  issues:
+      types: [opened]
 jobs:
-  hello_world_job:
+   add_project_job:
+    name: add-project
     runs-on: ubuntu-latest
-    name: A job to say hello
     steps:
-    - name: Hello world action step
-      id: hello
-      uses: action-exampl/node-modules/@action/core
-      with:
-        who-to-greet: 'shriaas the Octobat'
-    # Use the output from the `hello` step
-    - name: Get the output time
-      run: echo "The time was ${{ steps.hello.outputs.time }}"
+    - name: setup directory
+      uses: actions/checkout@v2
+    - name: A job to add or update a project
+      run: | 
+        python3 add-name.py "${{ github.event.issue.title }}" "${{ github.event.issue.body }}"
+        git config user.name shriaas2898
+        git config user.email aasthashrivastava410@gmail.com
+        git add .
+        git commit -m "Added: ${{ github.event.issue.title }}"
+        git push
