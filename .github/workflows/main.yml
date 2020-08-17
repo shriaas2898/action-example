@@ -2,7 +2,7 @@ name: add-project
 # This workflow gets executed when someone opens an issue for adding a project
 on:
   issues:
-      types: [opened]
+      types: [opened,updated]
 jobs:
    add_project_job:
     name: add-project
@@ -13,6 +13,7 @@ jobs:
     - name: A job to add or update a project
       run: | 
         echo ::set-output name=issue_comment `python3 add-name.py "${{ github.event.issue.title }}" "${{ github.event.issue.body }}"`
+        echo ${{ steps.fruit.outputs.issue_comment }}
         git config user.name shriaas2898
         git add .
         git commit -m "Added: ${{ github.event.issue.title }}"
