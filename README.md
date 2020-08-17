@@ -17,6 +17,7 @@ The time person was greeted
 | [@aastha](https://github.io/aastha) | 1 | <details> <summary>List of Contributions </summary> - [name-for-pr](https://github.com/link-torepo/org/pull/156) <br></details> |
 | [@bla](https://github.io/bla) | 1 | <details> <summary>List of Contributions </summary> - [PR for something](https://github.com/link/to/pull/17) <br></details> |
 | [@shriaas2898](https://github.io/shriaas2898) | 1 | <details> <summary>List of Contributions </summary> - [PR for something](https://github.com/link/topr/pull/11) <br></details> |
+| [@shriaas289](https://github.io/shriaas289) | 1 | <details> <summary>List of Contributions </summary> - [PR for something](https://github.com/link/link/pull/220) <br></details> |
 <!-- End of Leaderbaord-->
 
 
