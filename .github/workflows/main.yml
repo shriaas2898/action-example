@@ -12,9 +12,13 @@ jobs:
       uses: actions/checkout@v2
     - name: A job to add or update a project
       run: | 
-        python3 add-name.py "${{ github.event.issue.title }}" "${{ github.event.issue.body }}"
+        echo ::set-output name=issue_comment `python3 add-name.py "${{ github.event.issue.title }}" "${{ github.event.issue.body }}"`
         git config user.name shriaas2898
-        git config user.email aasthashrivastava410@gmail.com
         git add .
         git commit -m "Added: ${{ github.event.issue.title }}"
         git push
+    - name: Close Issue
+      uses: peter-evans/close-issue@v1
+      with:
+          issue-number: ${{ github.event.issue.number }}
+          comment: ${{ steps.fruit.outputs.issue_comment }}
