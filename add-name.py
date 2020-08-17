@@ -123,5 +123,6 @@ if __name__ == "__main__":
     
     except LeaderbaordError as e:
         print(str(e))
+
     except Exception as e:
         print("Error: Internal error occured. Please try again later.")
