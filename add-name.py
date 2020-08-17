@@ -19,7 +19,7 @@ and returns the data of updated JSON file.
 def add_record(data,username,pr_dict):
     # Check if record exists
     if (username in data.keys()):
-        raise LeaderbaordError("Error: Record already exists please create a new issue to update the contributions.")
+        raise LeaderbaordError("Record already exists please create a new issue to update the contributions.")
 
     # Add new record
     data[username] = {"count": len(pr_dict),
@@ -41,7 +41,7 @@ and returns the data of updated JSON file.
 def update_record(data,username,pr_dict):
     # Check if record exists
     if (username not in data.keys()):
-        raise LeaderbaordError("Error: Record does not exists please create a new issue to add a contribution.")
+        raise LeaderbaordError("Record does not exists please create a new issue to add a contribution.")
 
     # Update count 
     data[username]["count"] +=  len(pr_dict)
@@ -106,7 +106,7 @@ if __name__ == "__main__":
             link = (link.lstrip("**Link**: ")).strip()
             # If link is not valid
             if(search(r"^https://github.com/.+/.+/pull/\d+$",link) == None):
-                raise LeaderbaordError("Error link is not valid please create another issue with valid link.")
+                raise LeaderbaordError("Link is not valid please create another issue with valid link.")
 
             pr_name = pr.split('|')[0].strip()
             pr_name = (pr_name.lstrip("**Name**: ")).strip()
@@ -129,4 +129,4 @@ if __name__ == "__main__":
         print(str(e))
 
     except Exception as e:
-        print("Error: Internal error occured. Please try again later.")
+        print("Internal error occured. Please try again later.")
