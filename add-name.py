@@ -126,7 +126,7 @@ if __name__ == "__main__":
         print("Successfully added your contribution")
     
     except LeaderbaordError as e:
-        print(str(e))
+        print("Something happened: ",str(e))
 
     except Exception as e:
         print("Internal error occured. Please try again later.")
