@@ -5,8 +5,8 @@ on:
       types: [opened,edited]
 jobs:
    add_project_job:
-   if: startsWith( ${{ github.event.issue.title }},"add")||startsWith( ${{ github.event.issue.title }},"update") 
     name: add-project
+    if: startsWith( ${{ github.event.issue.title }},"add")||startsWith( ${{ github.event.issue.title }},"update") 
     runs-on: ubuntu-latest
     steps:
     - name: setup directory
@@ -20,6 +20,7 @@ jobs:
         git commit -m "Added: ${{ github.event.issue.title }}"
         git push
     - name: Close Issue
+      if: startsWith( ${{ github.event.issue.title }},"add")||startsWith( ${{ github.event.issue.title }},"update") 
       uses: peter-evans/close-issue@v1
       with:
           issue-number: ${{ github.event.issue.number }}
