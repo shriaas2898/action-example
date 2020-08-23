@@ -10,8 +10,8 @@
 | [@bla](https://github.io/bla) | 1 | <details> <summary>List of Contributions </summary> - [PR for something](https://github.com/link/to/pull/17) <br></details> |
 | [@shriaas289](https://github.io/shriaas289) | 1 | <details> <summary>List of Contributions </summary> - [PR for something](https://github.com/link/link/pull/220) <br></details> |
 | [@@shriaas2898](https://github.io/@shriaas2898) | 1 | <details> <summary>List of Contributions </summary> - [Added input field](https://github.com/link/to-pr/pull/223) <br></details> |
-New to the repository? click [here](https://github.com/shriaas2898/action-example/issues/new?assignees=&labels=&template=new-contributor.md&title=add|0008) to add your contribution.
 <!-- End of Leaderbaord-->
+New to the repository? click [here](https://github.com/shriaas2898/action-example/issues/new?assignees=&labels=&template=new-contributor.md&title=add|0008) to add your contribution.
 
 
 
