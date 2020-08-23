@@ -1,7 +1,8 @@
-import sys, json
+import sys, json, datetime, requests
 from collections import OrderedDict
 from operator import getitem
 from re import search
+from github import Github
 
 '''
 Class to raise error if everything there is some problem in processing even if everyting is syntactically correct. 
@@ -17,11 +18,8 @@ Takes existing data of JSON file, username and PR information as input and adds 
 and returns the data of updated JSON file.
 '''
 def add_record(data,username,pr_dict):
-    # Check if record exists
-    if (username in data.keys()):
-        raise LeaderbaordError("Record already exists please create a new issue to update the contributions.")
-
-    # Add new record
+    
+    # Add new record or update existing record
     data[username] = {"count": len(pr_dict),
                       "contributions": pr_dict
                     }
@@ -35,27 +33,33 @@ def add_record(data,username,pr_dict):
 
 
 '''
-Takes existing data of JSON file, username and PR information as input and updates a record to the JSON file
-and returns the data of updated JSON file.
+Function to get PR object through github API based on supplied html url
 '''
-def update_record(data,username,pr_dict):
-    # Check if record exists
-    if (username not in data.keys()):
-        raise LeaderbaordError("Record does not exists please create a new issue to add a contribution.")
+def get_pr_by_html(html,g):
+    html = html[len("https://github.com/"):]
+    org,repo,temp,pr_id = html.split("/")
+    repo = g.get_repo(f"{org}/{repo}")
+    return repo.get_pull(int(pr_id))
 
-    # Update count 
-    data[username]["count"] +=  len(pr_dict)
-    # Add new contributions
-    for name,link in pr_dict.items():
-        data[username]["contributions"][name] = link
-    # Sort records in reverse order
-    data = OrderedDict(sorted(data.items(), 
-                    key = lambda x: getitem(x[1], 'count'),reverse=True))
-    # Write sorted records in JSON file
-    with open("community-contributions.json","w") as write_file:
-            json.dump(data,write_file,indent=2)
 
-    return data
+'''
+Function to check if the link supplied for PR is working, belongs to the user and is made in the given duration.
+'''
+def get_pr_title(html,username,start_date,end_date,g):
+    # If link points to a page which does not exists
+    if((search(r"^https://github.com/.+/.+/pull/\d+$",html) == None) or (requests.get(html).status_code != 200)):
+        raise LeaderbaordError(f"Link:{html} is not valid please edit the issue with valid link.")
+    # If link is valid get the PR object through github API
+    pr_obj = get_pr_by_html(html,g)
+    # If PR is no created by given  user
+    if(pr_obj.user.login != username):
+        raise LeaderbaordError(f"The PR: {html} is not created by {username}")
+    # If PR is not created in given time period
+    if(pr_obj.created_at < start_date or pr_obj.created_at > end_date):
+        raise LeaderbaordError(f"The PR {html} was not created during Open Source Immersion Programme")
+    
+    # If PR is valid according to all the above mentioned criterias, return `True`
+    return pr_obj.title
 
 '''
 Updates the leaderboard
@@ -75,7 +79,7 @@ def update_leaderboard(data,start_marker,end_marker,file_name):
     # An empty list to store all the records
     records= []
     # Building string for record 
-    for usr,info in contr_data.items():
+    for usr,info in data.items():
         records.append(f"| [@{usr}](https://github.io/{usr}) | {info['count']} | <details> <summary>List of Contributions </summary>")
         for pr, link in info["contributions"].items():
             records.append(f" - [{pr}]({link}) <br>")
@@ -88,45 +92,44 @@ def update_leaderboard(data,start_marker,end_marker,file_name):
     with open(file_name,"w") as write_file:
         write_file.write(write_data)
 
-if __name__ == "__main__":
 
+#if __name__ == "__main__":
+def test(username,links):
     try:
         
-        issue_head = sys.argv[1].strip()
-        issue_bod = sys.argv[2].strip() 
+        #username = sys.argv[1].strip()
+        #links = (sys.argv[2].strip()).split("\n")
+        links = (links.strip()).split("\n")
+        g = Github()
         # Get records from JSON file
         with open("community-contributions.json","r") as read_file:
             contr_data = json.load(read_file)
 
         # Create a dictionary
         pr_dict = {}
-        for pr in issue_bod.split("\n"):
-            # Assigning PR variables for PR name and link
-            link = pr.split('|')[1].strip()
-            link = (link.lstrip("**Link**: ")).strip()
-            # If link is not valid
-            if(search(r"^https://github.com/.+/.+/pull/\d+$",link) == None):
-                raise LeaderbaordError("Link is not valid please create another issue with valid link.")
-
-            pr_name = pr.split('|')[0].strip()
-            pr_name = (pr_name.lstrip("**Name**: ")).strip()
+        # Validating the link
+        start_date = datetime.datetime(2020,7,15,00,00)
+        end_date = datetime.datetime(2020,8,16,00,00)
+        g = Github()
+        for link in links:
+            # Removing any extra spaces from the link
+            link = link.strip()
+            
+            title = get_pr_title(link,username,start_date,end_date,g)
             # Adding PR to the dictionary
-            pr_dict[pr_name] = link
+            pr_dict[title] = link
         
         # For adding new record 
-        if issue_head.split("|")[0].lower() == "add":
-            contr_data = add_record(contr_data,issue_head.split("|")[1],pr_dict)
-        
-        # For updating existing record
-        elif issue_head.split("|")[0].lower() == "update":
-            contr_data = update_record(contr_data,issue_head.split("|")[1],pr_dict)
+        contr_data = add_record(contr_data,username,pr_dict)
         
         # Update the leader board 
         update_leaderboard(contr_data, 'Link of Contribution|\n| --- | --- | --- |\n', '<!-- End of Leaderbaord', 'README.md')        
-        print("Successfully added your contribution")
+        #print("Successfully added your contribution")
+        return "Successfully added your contribution"
     
     except LeaderbaordError as e:
-        print(str(e))
-
-    except Exception as e:
-        print("Internal error occured. Please try again later.")
+        #print(str(e))
+        return str(e)
+    #except Exception as e:
+        #print("Internal error occured. Please try again later.")
+    #    return "Internal error occured. Please try again later."
