@@ -72,12 +72,14 @@ def update_leaderboard(data,start_marker,end_marker,file_name):
         # Get index of starting of leaderboard records
         start = read_data.index(start_marker)+len(start_marker) 
         # Get index of ending of leaderboard records
-        end = read_data.index(end_marker)
+        end = read_data.index(end_marker)+len(end_marker)
         write_data = read_data[:start]
         
     # Updating leaderboard from JSON file data
     # An empty list to store all the records
     records= []
+    # generating id for issue
+    count = str(len(data)).zfill(4)
     # Building string for record 
     for usr,info in data.items():
         records.append(f"| [@{usr}](https://github.io/{usr}) | {info['count']} | <details> <summary>List of Contributions </summary>")
@@ -86,7 +88,7 @@ def update_leaderboard(data,start_marker,end_marker,file_name):
         records.append("</details> |\n")
     
     # Combining all the records in a final string
-    write_data =  write_data+ "".join(records) + read_data[end:]
+    write_data =  write_data+"".join(records)+f"New to the repository? click [here](https://github.com/shriaas2898/action-example/issues/new?assignees=&labels=&template=new-contributor.md&title=add|{count}) to add your contribution.\n"+end_marker+read_data[end:]
 
     # Writing on README file
     with open(file_name,"w") as write_file:
@@ -96,9 +98,8 @@ def update_leaderboard(data,start_marker,end_marker,file_name):
 if __name__ == "__main__":
     try:
         
-        #username = sys.argv[1].strip()
-        #links = (sys.argv[2].strip()).split("\n")
-        links = (links.strip()).split("\n")
+        username = sys.argv[1].strip()
+        links = (sys.argv[2].strip()).split("\n")
         g = Github()
         # Get records from JSON file
         with open("community-contributions.json","r") as read_file:
@@ -122,7 +123,7 @@ if __name__ == "__main__":
         contr_data = add_record(contr_data,username,pr_dict)
         
         # Update the leader board 
-        update_leaderboard(contr_data, 'Link of Contribution|\n| --- | --- | --- |\n', '<!-- End of Leaderbaord', 'README.md')        
+        update_leaderboard(contr_data, 'Link of Contribution|\n| --- | --- | --- |\n', '<!-- End of Leaderbaord-->\n', 'README.md')        
         
         print("Successfully added your contribution")
     
