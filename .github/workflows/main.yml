@@ -9,12 +9,14 @@ jobs:
     if: startsWith( ${{ github.event.issue.title }},"add")||startsWith( ${{ github.event.issue.title }},"update") 
     runs-on: ubuntu-latest
     steps:
+    - name: install dependencies
+      run: pip3 install PyGithub
     - name: setup directory
       uses: actions/checkout@v2
     - name: A job to add or update a project
       id: addProject
       run: | 
-        echo ::set-output name=issue_comment::`python3 add_name.py ${{ github.event.issue.user.login }} ${{ github.event.issue.body }}`
+        echo ::set-output name=issue_comment::`python3 add_name.py '${{ github.event.issue.user.login }}' '${{ github.event.issue.body }}'`
         git config user.name shriaas2898
         git add .
         git commit -m "Added: ${{ github.event.issue.title }}"
