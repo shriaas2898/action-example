@@ -15,6 +15,15 @@
       "Updated readme": "https://github.com/shriaas2898/Julia-Learning-Notes/pull/1"
     }
   },
+  "nayanaya": {
+    "count": 4,
+    "contributions": {
+      "Ekdum naya": "https://github.com/nayi/link-pe/pull/2",
+      "Bilkul naya": "https://github.com/nayi/link-pe/pull/3",
+      "Bohot naya": "https://github.com/nayi/link-pe/pull/4",
+      "Bohot zyada hi naya": "https://github.com/nayi/link-pe/pull/5"
+    }
+  },
   "username": {
     "count": 1,
     "contributions": {
@@ -37,6 +46,12 @@
     "count": 1,
     "contributions": {
       "PR for something": "https://github.com/link/link/pull/220"
+    }
+  },
+  "@shriaas2898": {
+    "count": 1,
+    "contributions": {
+      "Added input field": "https://github.com/link/to-pr/pull/223"
     }
   }
 }
