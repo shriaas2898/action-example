@@ -9,13 +9,18 @@ jobs:
     if: startsWith( ${{ github.event.issue.title }},"add")||startsWith( ${{ github.event.issue.title }},"update") 
     runs-on: ubuntu-latest
     steps:
+    - name: setup directory
+      uses: actions/checkout@v2
+    - name: setup python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        architecture: 'x64'
     - name: install dependencies
       run: |
         sudo apt-get update -y
         sudo apt-get install -y python-setuptools
-        pip3 install PyGithub
-    - name: setup directory
-      uses: actions/checkout@v2
+        pip3 install PyGithub  
     - name: A job to add or update a project
       id: addProject
       run: | 
