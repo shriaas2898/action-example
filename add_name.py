@@ -65,21 +65,21 @@ def get_pr_title(html,username,start_date,end_date,g):
 Updates the leaderboard
 '''
 
-def update_leaderboard(data,start_marker,end_marker,file_name):
+def update_leaderboard(data,start_marker,end_marker,file_name,issue_number):
 
     with open(file_name,"r") as read_file:
-        read_data = read_file.read()
+        read_data = read_file.readlines()
         # Get index of starting of leaderboard records
-        start = read_data.index(start_marker)+len(start_marker) 
+        start = (read_data).index(start_marker) + 2 # line after table header
         # Get index of ending of leaderboard records
-        end = read_data.index(end_marker)+len(end_marker)
-        write_data = read_data[:start]
+        end = (read_data).index(end_marker) + 2 # line after end of table
+        write_data =  "".join(read_data[:start])
         
     # Updating leaderboard from JSON file data
     # An empty list to store all the records
     records= []
     # generating id for issue
-    count = str(len(data)).zfill(4)
+    issue_number = str(issue_number).zfill(4)
     # Building string for record 
     for usr,info in data.items():
         records.append(f"| [@{usr}](https://github.io/{usr}) | {info['count']} | <details> <summary>List of Contributions </summary>")
@@ -88,7 +88,8 @@ def update_leaderboard(data,start_marker,end_marker,file_name):
         records.append("</details> |\n")
     
     # Combining all the records in a final string
-    write_data =  write_data+"".join(records)+end_marker+f"New to the repository? click [here](https://github.com/shriaas2898/action-example/issues/new?assignees=&labels=&template=new-contributor.md&title=add|{count}) to add your contribution.\n"+read_data[end:]
+    write_data =  write_data+"".join(records)+end_marker+f"New to the repository? click [here](https://github.com/shriaas2898/action-example/issues/new?assignees=&labels=&template=new-contributor.md&title=add|{issue_number}) to add your contribution.\n"
+    write_data = write_data+"".join(read_data[end:])
 
     # Writing on README file
     with open(file_name,"w") as write_file:
@@ -114,7 +115,6 @@ if __name__ == "__main__":
         for link in links:
             # Removing any extra spaces from the link
             link = link.strip()
-            
             title = get_pr_title(link,username,start_date,end_date,g)
             # Adding PR to the dictionary
             pr_dict[title] = link
@@ -122,8 +122,12 @@ if __name__ == "__main__":
         # For adding new record 
         contr_data = add_record(contr_data,username,pr_dict)
         
-        # Update the leader board 
-        update_leaderboard(contr_data, 'Link of Contribution|\n| --- | --- | --- |\n', '<!-- End of Leaderbaord-->\n', 'README.md')        
+        # Update the leader board
+        # Genrating issue number for the link 
+        repo = g.get_repo("shriaas2898/action-example")
+        issues =  repo.get_issues(state='all')
+        issue_number= list(issues)[0].number + 1 # The first element of issue list is the latest issue
+        update_leaderboard(contr_data, '| Name | Number of Contributions | Link of Contribution|\n', '<!-- End of Leaderbaord-->\n', 'README.md',issue_number)        
         
         print("Successfully added your contribution")
     
