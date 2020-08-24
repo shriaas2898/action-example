@@ -25,9 +25,13 @@ jobs:
         git add .
         git commit -m "Added: ${{ github.event.issue.title }}"
         git push
-    - name: Close Issue
-      if: startsWith( ${{ github.event.issue.title }},"add|")
+   close_issue_job:
+    name: Close Issue
+    runs-on: ubumtu-latest
+    if: startsWith( ${{ github.event.issue.title }},"add|")
+    steps:
+    - name: close issue
       uses: peter-evans/close-issue@v1
       with:
-          issue-number: ${{ github.event.issue.number }}
-          comment: ${{ steps.addProject.outputs.issue_comment }}
+        issue-number: ${{ github.event.issue.number }}
+        comment: ${{ jobs.add_project_job.steps.addProject.outputs.issue_comment }}
