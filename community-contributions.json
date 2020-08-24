@@ -1,57 +1,11 @@
 {
-  "Amorpheuz": {
-    "count": 4,
-    "contributions": {
-      "Update Windows Installation docs to WSL 2": "https://github.com/forem/forem/pull/9573",
-      "Fix actions/checkout to v2 for rebase workflow": "https://github.com/forem/forem/pull/9515",
-      "Run Push step only on push to dev branch": "https://github.com/Amorpheuz/gatsby-conditional-builds-demo/pull/4",
-      "Lol": "https://google.com"
-    }
-  },
-  "nayanaya": {
-    "count": 4,
-    "contributions": {
-      "Ekdum naya": "https://github.com/nayi/link-pe/pull/2",
-      "Bilkul naya": "https://github.com/nayi/link-pe/pull/3",
-      "Bohot naya": "https://github.com/nayi/link-pe/pull/4",
-      "Bohot zyada hi naya": "https://github.com/nayi/link-pe/pull/5"
-    }
-  },
   "shriaas2898": {
-    "count": 2,
+    "count": 4,
     "contributions": {
-      "Create LICENSE": "https://github.com/shriaas2898/Lekhni/pull/8",
-      "Updated readme": "https://github.com/shriaas2898/Julia-Learning-Notes/pull/1"
-    }
-  },
-  "username": {
-    "count": 1,
-    "contributions": {
-      "PR for something": "https://github.com/link-to-pr"
-    }
-  },
-  "aastha": {
-    "count": 1,
-    "contributions": {
-      "name-for-pr": "https://github.com/link-torepo/org/pull/156"
-    }
-  },
-  "bla": {
-    "count": 1,
-    "contributions": {
-      "PR for something": "https://github.com/link/to/pull/17"
-    }
-  },
-  "shriaas289": {
-    "count": 1,
-    "contributions": {
-      "PR for something": "https://github.com/link/link/pull/220"
-    }
-  },
-  "@shriaas2898": {
-    "count": 1,
-    "contributions": {
-      "Added input field": "https://github.com/link/to-pr/pull/223"
+      "Create LICENSE": "https://github.com/shriaas2898/Julia-Learning-Notes/pull/2",
+      "Updated readme": "https://github.com/shriaas2898/Julia-Learning-Notes/pull/1",
+      "Added sample code resource for Julia ": "https://github.com/fbdevelopercircles/FbDevcCommunityContent/pull/217",
+      "Updating develop branch": "https://github.com/devcpune/kaleidoscope/pull/7"
     }
   }
 }

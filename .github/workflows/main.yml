@@ -5,21 +5,29 @@ on:
       types: [opened,edited]
 jobs:
    add_project_job:
-   if: startsWith( ${{ github.event.issue.title }},"add")||startsWith( ${{ github.event.issue.title }},"update") 
     name: add-project
+    if: startsWith( ${{ github.event.issue.title }},"add")||startsWith( ${{ github.event.issue.title }},"update") 
     runs-on: ubuntu-latest
     steps:
     - name: setup directory
       uses: actions/checkout@v2
+    - name: setup python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        architecture: 'x64'
+    - name: install dependencies
+      run: pip3 install PyGithub  
     - name: A job to add or update a project
       id: addProject
       run: | 
-        echo ::set-output name=issue_comment::`python3 add_name.py ${{ github.event.issue.user.login }} ${{ github.event.issue.body }}`
+        echo ::set-output name=issue_comment::`python3 add_name.py '${{ github.event.issue.user.login }}' '${{ github.event.issue.body }}'`
         git config user.name shriaas2898
         git add .
         git commit -m "Added: ${{ github.event.issue.title }}"
         git push
     - name: Close Issue
+      if: startsWith( ${{ github.event.issue.title }},"add")||startsWith( ${{ github.event.issue.title }},"update") 
       uses: peter-evans/close-issue@v1
       with:
           issue-number: ${{ github.event.issue.number }}
