@@ -28,6 +28,7 @@ jobs:
    close_issue_job:
     name: Close Issue
     runs-on: ubumtu-latest
+    needs: add_project_job
     if: startsWith( ${{ github.event.issue.title }},"add|")
     steps:
     - name: close issue
