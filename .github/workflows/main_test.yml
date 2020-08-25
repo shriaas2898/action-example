@@ -11,6 +11,7 @@ jobs:
     name: add-project
     runs-on: ubuntu-latest
     steps:
+    - run: echo startswith condition startsWith( ${{ github.event.issue.title }},"add|")
     - name: setup directory
       uses: actions/checkout@v2
     - name: setup python
