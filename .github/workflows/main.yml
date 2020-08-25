@@ -33,6 +33,7 @@ jobs:
    close_issue_job:
     name: Close Issue
     runs-on: ubuntu-latest
+    needs: add_project_job
     if: startsWith( ${{ github.event.issue.title }},"add|")
     steps:
     - uses: nick-invision/persist-action-data@v1
