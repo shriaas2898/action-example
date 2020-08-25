@@ -7,7 +7,7 @@ on:
 
 jobs:
   add_project_job:
-    if: startsWith(${{ github.event.issue.title }},add|)
+    if: startsWith(${{ github.event.issue.title }},add|)==true
     name: add-project
     runs-on: ubuntu-latest
     steps:
