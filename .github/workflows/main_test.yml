@@ -7,7 +7,7 @@ on:
 
 jobs:
   add_project_job:
-    if: startsWith( ${{ github.event.issue.title }},"add|")
+    if: startsWith(${{ github.event.issue.title }},add|)
     name: add-project
     runs-on: ubuntu-latest
     steps:
@@ -30,7 +30,7 @@ jobs:
         git commit -m "Added: ${{ github.event.issue.title }}"
         git push
     - name: close issue
-      if: "cancelled()==false && startsWith(${{ github.event.issue.title }}, 'add|')"
+      if: "cancelled()==false && startsWith(${{ github.event.issue.title }}, add|)"
       uses: peter-evans/close-issue@v1
       with:
         issue-number: ${{ github.event.issue.number }}
