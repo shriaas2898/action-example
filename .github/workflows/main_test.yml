@@ -6,7 +6,6 @@ on:
       
 
 jobs:
-  if: startsWith( ${{ github.event.issue.title }},"add|")
   add_project_job:
     name: add-project
     runs-on: ubuntu-latest
