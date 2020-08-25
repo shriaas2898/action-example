@@ -37,3 +37,10 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           comment: ${{ steps.addProject.outputs.issue_comment }}
+      - name: add comment
+        if: failure()==true
+        uses: peter-evans/create-or-update-comment@v1.4.2
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body:  ${{ steps.addProject.outputs.issue_comment }}
+              
