@@ -26,22 +26,9 @@ jobs:
         git add .
         git commit -m "Added: ${{ github.event.issue.title }}"
         git push
-    - uses: nick-invision/persist-action-data@v1
-      with:
-        data: ${{ steps.addProject.outputs.issue_comment }}
-        variable: ISSUE_COMMENT
-   close_issue_job:
-    name: Close Issue
-    runs-on: ubuntu-latest
-    needs: add_project_job
-    if: startsWith( ${{ github.event.issue.title }},"add|")
-    steps:
-    - uses: nick-invision/persist-action-data@v1
-      with:
-        data: ${{ steps.addProject.outputs.issue_comment }}
-        retrive_variables: ISSUE_COMMENT
     - name: close issue
+      if: cancelled()==false
       uses: peter-evans/close-issue@v1
       with:
         issue-number: ${{ github.event.issue.number }}
-        comment: $ISSUE_COMMENT
+        comment: ${{ steps.addProject.outputs.issue_comment }}
